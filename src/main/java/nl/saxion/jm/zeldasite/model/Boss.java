@@ -1,7 +1,6 @@
 package nl.saxion.jm.zeldasite.model;
 
 import nl.saxion.jm.zeldasite.model.helper.Game;
-import sun.jvm.hotspot.utilities.BitMap;
 
 import java.util.ArrayList;
 
@@ -13,16 +12,16 @@ public class Boss {
     private Game seenIn;
     private ArrayList<Item> weapons;
     private ArrayList<Item> spoils;
-    private BitMap image;
+    private String imageName;
 
-    public Boss(String name, Game seenIn, BitMap image)
+    public Boss(String name, Game seenIn, String imageName)
     {
         id = idList;
         idList++;
 
         this.name = name;
         this.seenIn = seenIn;
-        this.image = image;
+        this.imageName = imageName;
 
         weapons = new ArrayList<>();
         spoils = new ArrayList<>();
@@ -88,11 +87,11 @@ public class Boss {
         this.spoils = spoils;
     }
 
-    public BitMap getImage() {
-        return image;
+    public String getImage() {
+        return imageName;
     }
 
-    public void setImage(BitMap image) {
-        this.image = image;
+    public void setImage(String image) {
+        this.imageName = imageName;
     }
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Item - ZeldaSite</title>
+</head>
+<body>
+<section class="imageSection">
+    <img th:src="${item.getImage()}"/>
+</section>
+<section class="textSection">
+    <h3 th:text="${item.getName()}"></h3>
+    <p th:text="${item.getDescription()}"></p>
+</section>
+</body>
+</html>

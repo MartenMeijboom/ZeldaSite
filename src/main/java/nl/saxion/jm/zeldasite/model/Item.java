@@ -1,7 +1,6 @@
 package nl.saxion.jm.zeldasite.model;
 
 import nl.saxion.jm.zeldasite.model.helper.Type;
-import sun.jvm.hotspot.utilities.BitMap;
 
 public class Item {
 
@@ -9,17 +8,37 @@ public class Item {
     private int id;
     private static int idList = 0;
     private Type type;
-    private BitMap image;
+    private String imageName;
+    private String description;
 
-    public Item(String name, Type type, BitMap image)
+    public Item(String name, Type type, String imageName, String description)
     {
         id = idList;
         idList++;
 
         this.name = name;
         this.type = type;
-        this.image = image;
+        this.imageName = imageName;
+        this.description = description;
     }
+
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
     public void setName(String name) {
         this.name = name;
@@ -37,8 +56,8 @@ public class Item {
         this.type = type;
     }
 
-    public void setImage(BitMap image) {
-        this.image = image;
+    public void setImage(String image) {
+        this.imageName = image;
     }
 
     public String getName() {
@@ -57,7 +76,7 @@ public class Item {
         return type;
     }
 
-    public BitMap getImage() {
-        return image;
+    public String getImage() {
+        return imageName;
     }
 }
