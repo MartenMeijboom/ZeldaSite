@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Items - ZeldaSite</title>
 </head>
 <body>
-
+<header th:insert="../fragments/menubar.html :: menu_items"></header>
 <table>
 <tr th:each="item:${items}">
     <th th:text="${item.getName()}">Item name</th>
@@ -14,6 +14,7 @@
     <th><a th:href="@{/items/{itemId}(itemId=${item.getId()})}">Go to itempage</a></th>
 </tr>
 </table>
+<header th:insert="../fragments/footer.html :: footer"></header>
 
 </body>
 </html>

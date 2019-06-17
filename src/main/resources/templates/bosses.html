@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Bosses - ZeldaSite</title>
 </head>
 <body>
+<header th:insert="../fragments/menubar.html :: menu_bosses"></header>
 <table>
     <tr th:each="boss:${bosses}">
         <th th:text="${boss.getName()}">Item name</th>
@@ -13,5 +14,7 @@
         <th><a th:href="@{/bosses/{bossId}(bossId=${boss.getId()})}">More info</a></th>
     </tr>
 </table>
+<header th:insert="../fragments/footer.html :: footer"></header>
+
 </body>
 </html>

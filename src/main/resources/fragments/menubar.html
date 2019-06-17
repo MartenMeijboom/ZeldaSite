@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>menu</title>
+</head>
+<body>
+<div class="topnav" th:fragment="menu">
+    <a href="/">Home</a>
+    <a href="/bosses">Bosses</a>
+    <a href="/items">Items</a>
+    <a href="/overview">My character</a>
+    <a href="/profile">Account settings</a>
+    <a href="/logout">Logout</a>
+</div>
+<div class="topnav" th:fragment="menu_home">
+    <a class="active" href="#">Home</a>
+    <a href="/bosses">Bosses</a>
+    <a href="/items">Items</a>
+    <a href="/overview">My character</a>
+    <a href="/profile">Account settings</a>
+    <a href="/logout">Logout</a>
+</div>
+<div class="topnav" th:fragment="menu_bosses">
+    <a href="/">Home</a>
+    <a class="active" href="/bosses">Bosses</a>
+    <a href="/items">Items</a>
+    <a href="/overview">My character</a>
+    <a href="/profile">Account settings</a>
+    <a href="/logout">Logout</a>
+</div>
+<div class="topnav" th:fragment="menu_items">
+    <a href="/">Home</a>
+    <a href="/bosses">Bosses</a>
+    <a class="active" href="/items">Items</a>
+    <a href="/overview">My character</a>
+    <a href="/profile">Account settings</a>
+    <a href="/logout">Logout</a>
+</div>
+<div class="topnav" th:fragment="menu_character">
+    <a href="/">Home</a>
+    <a href="/bosses">Bosses</a>
+    <a href="/items">Items</a>
+    <a class="active" href="/overview">My character</a>
+    <a href="/profile">Account settings</a>
+    <a href="/logout">Logout</a>
+</div>
+<div class="topnav" th:fragment="menu_account">
+    <a href="/">Home</a>
+    <a href="/bosses">Bosses</a>
+    <a href="/items">Items</a>
+    <a href="/overview">My character</a>
+    <a class="active" href="/profile">Account settings</a>
+    <a href="/logout">Logout</a>
+</div>
+</body>
+</html>

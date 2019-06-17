@@ -6,6 +6,7 @@
     <title>Boss - ZeldaSite</title>
 </head>
 <body>
+<header th:insert="../fragments/menubar.html :: menu_bosses"></header>
 <section class="imageSection">
     <img th:src="${boss.getImage()}"/>
 </section>
@@ -13,5 +14,7 @@
     <h3 th:text="${boss.getName()}"></h3>
     <p th:text="${boss.getDescription()}"></p>
 </section>
+<header th:insert="../fragments/footer.html :: footer"></header>
+
 </body>
 </html>
