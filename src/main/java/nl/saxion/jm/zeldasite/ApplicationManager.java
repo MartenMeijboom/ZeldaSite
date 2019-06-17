@@ -3,6 +3,7 @@ package nl.saxion.jm.zeldasite;
 import nl.saxion.jm.zeldasite.model.Boss;
 import nl.saxion.jm.zeldasite.model.User;
 import nl.saxion.jm.zeldasite.model.Item;
+import nl.saxion.jm.zeldasite.model.helper.Game;
 import nl.saxion.jm.zeldasite.model.helper.Type;
 
 import java.util.ArrayList;
@@ -38,6 +39,12 @@ public class ApplicationManager {
         items.add(item);
         item = new Item("TestItem12", type, "../stockimage.png", "");
         items.add(item);
+
+        Game seenIn = new Game("The Adventure of Link", 1988);
+        Boss boss = new Boss("Gooma", seenIn, "../gooma.png", "Gooma is the boss of the Ocean Palace, the fifth dungeon in Zelda II: The Adventure of Link. He is a giant humanoid monster that attacks with a Ball and Chain. The name Gooma was already used in the Japanese localization of the game for the Guma. In the Japanese original, Gooma's name is Jianto, or simply Giant. Interestingly in his artwork, Gooma bears resemblance to the Minotaur, a legendary creature with the body of a man and the head of a bull, known primarily from Greek mythology. According to the Playing with Power section for the game, Gooma was meant to be a troll.");
+        bosses.add(boss);
+        boss = new Boss("Thunderbird", seenIn, "../thunderbird.png", "Thunderbird is the penultimate boss of Zelda II: The Adventure of Link. It is a giant, winged creature that resides within the Great Palace. Link fights Thunderbird just prior to the final boss, Dark Link. Notably, Thunderbird is the only boss battle in the game fought without the specific battle music playing, as the Great Palace dungeon theme keeps playing throughout the battle. It is also the only mini-boss in the game, not being fought at the end of the dungeon (or in this game, palace) it resides in, instead the real boss being Link's own shadow.");
+        bosses.add(boss);
     }
 
     public void adduser(User user)
@@ -111,6 +118,10 @@ public class ApplicationManager {
     public ArrayList<Item> getItems()
     {
         return items;
+    }
+
+    public ArrayList<Boss> getBosses(){
+        return bosses;
     }
 
     public String[] getBossNames()

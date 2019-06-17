@@ -1,6 +1,7 @@
 package nl.saxion.jm.zeldasite.controller;
 
 import nl.saxion.jm.zeldasite.ApplicationManager;
+import nl.saxion.jm.zeldasite.model.Boss;
 import nl.saxion.jm.zeldasite.model.Item;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +50,29 @@ public class ApplicationController {
         }
         else {
             model.addAttribute("error", "404, Item not found");
+            return "error";
+        }
+    }
+
+    @GetMapping(path = "/bosses")
+    public String bossesPage(Model model)
+    {
+        model.addAttribute("bosses", myManager().getBosses());
+        return "bosses";
+    }
+
+    @GetMapping(path = "/bosses/{bossid}")
+    public String bossPage(Model model, @PathVariable("bossid") int bossId)
+    {
+        Boss boss = myManager().getBoss(bossId);
+
+        if(boss != null)
+        {
+            model.addAttribute(boss);
+            return "boss";
+        }
+        else {
+            model.addAttribute("error", "404, Boss not found");
             return "error";
         }
     }

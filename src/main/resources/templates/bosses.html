@@ -2,11 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
     <title>Bosses - ZeldaSite</title>
 </head>
 <body>
-
-<h1 th:text="${hello}"></h1>
-
+<table>
+    <tr th:each="boss:${bosses}">
+        <th th:text="${boss.getName()}">Item name</th>
+        <th>Seen in: <span th:text="${boss.getSeenIn().toString()}"></span></th>
+        <th><a th:href="@{/bosses/{bossId}(bossId=${boss.getId()})}">More info</a></th>
+    </tr>
+</table>
 </body>
 </html>

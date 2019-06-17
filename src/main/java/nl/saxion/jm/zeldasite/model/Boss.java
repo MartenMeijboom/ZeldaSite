@@ -13,8 +13,9 @@ public class Boss {
     private ArrayList<Item> weapons;
     private ArrayList<Item> spoils;
     private String imageName;
+    private String description;
 
-    public Boss(String name, Game seenIn, String imageName)
+    public Boss(String name, Game seenIn, String imageName, String description)
     {
         id = idList;
         idList++;
@@ -22,6 +23,7 @@ public class Boss {
         this.name = name;
         this.seenIn = seenIn;
         this.imageName = imageName;
+        this.description = description;
 
         weapons = new ArrayList<>();
         spoils = new ArrayList<>();
@@ -93,5 +95,13 @@ public class Boss {
 
     public void setImage(String image) {
         this.imageName = imageName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
