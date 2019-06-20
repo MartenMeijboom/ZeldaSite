@@ -60,7 +60,7 @@
 
 <h2 th:if="${bosses.size() > 0}">Add a boss:</h2>
 
-<form id="bossform" action="/addbossToCharacter" method="post" th:if="${bosses.size() > 0}">
+<form id="bossform" action="/addBossToCharacter" method="post" th:if="${bosses.size() > 0}">
     Boss:<br>
     <select name="bossid" form="bossform">
         <option th:each="boss:${bosses}" th:value="${boss.getId()}" th:text="${boss.getName()}"></option>

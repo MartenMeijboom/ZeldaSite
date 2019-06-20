@@ -96,7 +96,7 @@ public class ApplicationController {
         return "redirect:/bosses";
     }
 
-    @GetMapping(path = "login")
+    @GetMapping(path = "/login")
     public String viewLogin(HttpSession session)
     {
         if(session.getAttribute("userName") != null)
@@ -106,7 +106,7 @@ public class ApplicationController {
         return "login";
     }
 
-    @GetMapping(path = "register")
+    @GetMapping(path = "/register")
     public String viewRegister(HttpSession session)
     {
         if(session.getAttribute("userName") != null)
@@ -116,7 +116,7 @@ public class ApplicationController {
         return "register";
     }
 
-    @PostMapping(path = "login")
+    @PostMapping(path = "/login")
     public String verifyLogin(LoginAttempt attempt, HttpSession session)
     {
         User user = myManager().verifyLogin(attempt);
@@ -129,7 +129,7 @@ public class ApplicationController {
         return "redirect:/login?message=failed";
     }
 
-    @GetMapping(path = "profile")
+    @GetMapping(path = "/profile")
     public String viewProfile(HttpSession session, Model model)
     {
         if(session.getAttribute("userName") != null)
@@ -141,7 +141,7 @@ public class ApplicationController {
         return "login";
     }
 
-    @GetMapping(path = "overview")
+    @GetMapping(path = "/overview")
     public String overview(HttpSession session, Model model)
     {
         if(session.getAttribute("userName") != null)
@@ -175,15 +175,15 @@ public class ApplicationController {
         return "login";
     }
 
-    @PostMapping(path = "register")
+    @PostMapping(path = "/register")
     public String CreateAccount(User user, HttpSession session)
     {
         myManager().adduser(user);
         session.setAttribute("userName", user.getUserName());
-        return "/overview";
+        return "redirect:/overview";
     }
 
-    @GetMapping(path = "logout")
+    @GetMapping(path = "/logout")
     public String logout(HttpSession session, Model model)
     {
         if(session.getAttribute("userName") != null)
@@ -193,7 +193,7 @@ public class ApplicationController {
         return "redirect:/login?message=logout";
     }
 
-    @PostMapping(path = "addItemToCharacter")
+    @PostMapping(path = "/addItemToCharacter")
     public String addItemToCharacter(Integer itemid, HttpSession session)
     {
         Item item = myManager().getItem(itemid);
@@ -202,12 +202,24 @@ public class ApplicationController {
         return "redirect:/overview";
     }
 
-    @PostMapping(path = "addbossToCharacter")
+    @PostMapping(path = "/addBossToCharacter")
     public String addBossToCharacter(Integer bossid, HttpSession session)
     {
         Boss boss = myManager().getBoss(bossid);
         User user = myManager().getUser(session.getAttribute("userName").toString());
         user.addBoss(boss);
         return "redirect:/overview";
+    }
+
+    @PostMapping(path = "/updateUser")
+    public String updateUser(User user, HttpSession session)
+    {
+        User currentUser = myManager().getUser(session.getAttribute("userName").toString());
+        currentUser.setFullName(user.getFullName());
+        currentUser.setMailAddress(user.getMailAddress());
+        currentUser.setPassword(user.getPassword());
+        currentUser.setUserName(user.getUserName());
+        session.setAttribute("userName", currentUser.getUserName());
+        return "profile";
     }
 }

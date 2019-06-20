@@ -8,7 +8,23 @@
 <body>
 <header th:insert="../fragments/menubar.html :: menu_account"></header>
 
-<p th:text="${user.getFullName()}"></p>
+<h2>Account info:</h2>
+
+<form id="registerform" action="/updateUser" method="post">
+    Username:<br>
+    <input type="text" name="userName" th:value="${user.getUserName()}"><br>
+
+    Full name:<br>
+    <input type="text" name="fullName" th:value="${user.getFullName()}"><br>
+
+    Email address:<br>
+    <input type="text" name="mailAddress" th:value="${user.getMailAddress()}"><br>
+
+    Password:<br>
+    <input type="password" name="password"><br>
+
+    <input type="submit" value="Save changes">
+</form>
 
 <header th:insert="../fragments/footer.html :: footer"></header>
 </body>
