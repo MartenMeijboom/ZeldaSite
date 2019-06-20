@@ -11,9 +11,14 @@
 <h2>Bosses:</h2>
 
 <table>
+    <tr>
+        <th><b>Name</b></th>
+        <th><b>Seen in</b></th>
+        <th><b></b></th>
+    </tr>
     <tr th:each="boss:${bosses}">
         <th th:text="${boss.getName()}">Item name</th>
-        <th>Seen in: <span th:text="${boss.getSeenin()}"></span></th>
+        <th><span th:text="${boss.getSeenin()}"></span></th>
         <th><a th:href="@{/bosses/{bossId}(bossId=${boss.getId()})}">More info</a></th>
     </tr>
 </table>

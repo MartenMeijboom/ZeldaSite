@@ -11,9 +11,14 @@
 <h2>Items</h2>
 
 <table>
+    <tr>
+        <th><b>Name</b></th>
+        <th><b>Type</b></th>
+        <th><b></b></th>
+    </tr>
 <tr th:each="item:${items}">
     <th th:text="${item.getName()}">Item name</th>
-    <th>Type: <span th:text="${item.getType()}"></span></th>
+    <th><span th:text="${item.getType()}"></span></th>
     <th><a th:href="@{/items/{itemId}(itemId=${item.getId()})}">Go to itempage</a></th>
 </tr>
 </table>

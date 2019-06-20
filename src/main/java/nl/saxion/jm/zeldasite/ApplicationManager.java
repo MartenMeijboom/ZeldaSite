@@ -27,9 +27,9 @@ public class ApplicationManager {
 
     private void generateTestData()
     {
-        User user = new User("yeet", "Marten Meijboom", "test@testmail.com", "12345");
+        User user = new User("test", "Pieter Post", "sdfijbsadfjasijfbasi.com", "123");
         adduser(user);
-        user = new User("testUseerNaemsfd", "Pieter Post", "sdfijbsadfjasijfbasi.com", "jajaneenee");
+        user = new User("marten", "Marten Meijboom", "test@testmail.com", "123");
         adduser(user);
 
 
@@ -44,8 +44,12 @@ public class ApplicationManager {
         bosses.add(boss);
         boss = new Boss("Thunderbird", "The Adventure of Link (1988)", "Thunderbird is the penultimate boss of Zelda II: The Adventure of Link. It is a giant, winged creature that resides within the Great Palace. Link fights Thunderbird just prior to the final boss, Dark Link. Notably, Thunderbird is the only boss battle in the game fought without the specific battle music playing, as the Great Palace dungeon theme keeps playing throughout the battle. It is also the only mini-boss in the game, not being fought at the end of the dungeon (or in this game, palace) it resides in, instead the real boss being Link's own shadow.");
         bosses.add(boss);
+        user.addBoss(boss);
         boss = new Boss("Vah Ruta", "Breath of the Wild (2017)", "Vah Ruta is a mechanical construct in The Legend of Zelda: Breath of the Wild. It is one of the four Divine Beasts. Vah Ruta is made from Ancient Sheikah technology; it takes the form of a giant elephant in the East Reservoir Lake in Lanayru Great Spring. Ganon sent Waterblight Ganon to corrupt it, transforming it into one of the main dungeons. Link must defeat this boss to free Vah Ruta.");
         bosses.add(boss);
+
+        user.addItem(item);
+        user.addBoss(boss);
     }
 
     public void adduser(User user)
@@ -148,11 +152,15 @@ public class ApplicationManager {
 
     public ArrayList<Item> getItems()
     {
-        return items;
+        ArrayList<Item> temp = new ArrayList<>();
+        temp.addAll(items);
+        return temp;
     }
 
     public ArrayList<Boss> getBosses(){
-        return bosses;
+        ArrayList<Boss> temp = new ArrayList<>();
+        temp.addAll(bosses);
+        return temp;
     }
 
     public String[] getBossNames()

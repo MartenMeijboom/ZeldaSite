@@ -2,10 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
     <title>Register - ZeldaSite</title>
 </head>
 <body>
-<header th:insert="../fragments/footer.html :: footer"></header>
+<header th:insert="../fragments/menubar.html :: menu_bosses"></header>
 
+<h2>Create account:</h2>
+
+<form id="registerform" action="/register" method="post">
+    Username:<br>
+    <input type="text" name="userName"><br>
+
+    Full name:<br>
+    <input type="text" name="fullName"><br>
+
+    Email address:<br>
+    <input type="text" name="mailAddress"><br>
+
+    Password:<br>
+    <input type="password" name="password"><br>
+
+    <input type="submit" value="Create">
+</form>
+
+<header th:insert="../fragments/footer.html :: footer"></header>
 </body>
 </html>

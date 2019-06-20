@@ -106,6 +106,16 @@ public class ApplicationController {
         return "login";
     }
 
+    @GetMapping(path = "register")
+    public String viewRegister(HttpSession session)
+    {
+        if(session.getAttribute("userName") != null)
+        {
+            return "redirect:/overview";
+        }
+        return "register";
+    }
+
     @PostMapping(path = "login")
     public String verifyLogin(LoginAttempt attempt, HttpSession session)
     {
@@ -142,6 +152,19 @@ public class ApplicationController {
             ArrayList<Item> items = myManager().getItems();
             ArrayList<Boss> bosses = myManager().getBosses();
 
+            for (Item i:myitems) {
+                if(items.contains(i))
+                {
+                    items.remove(i);
+                }
+            }
+            for (Boss b:mybosses) {
+                if(bosses.contains(b))
+                {
+                    bosses.remove(b);
+                }
+            }
+
             model.addAttribute(user);
             model.addAttribute("myitems", myitems);
             model.addAttribute("mybosses", mybosses);
@@ -152,6 +175,14 @@ public class ApplicationController {
         return "login";
     }
 
+    @PostMapping(path = "register")
+    public String CreateAccount(User user, HttpSession session)
+    {
+        myManager().adduser(user);
+        session.setAttribute("userName", user.getUserName());
+        return "/overview";
+    }
+
     @GetMapping(path = "logout")
     public String logout(HttpSession session, Model model)
     {
@@ -160,5 +191,23 @@ public class ApplicationController {
             session.setAttribute("userName", null);
         }
         return "redirect:/login?message=logout";
+    }
+
+    @PostMapping(path = "addItemToCharacter")
+    public String addItemToCharacter(Integer itemid, HttpSession session)
+    {
+        Item item = myManager().getItem(itemid);
+        User user = myManager().getUser(session.getAttribute("userName").toString());
+        user.addItem(item);
+        return "redirect:/overview";
+    }
+
+    @PostMapping(path = "addbossToCharacter")
+    public String addBossToCharacter(Integer bossid, HttpSession session)
+    {
+        Boss boss = myManager().getBoss(bossid);
+        User user = myManager().getUser(session.getAttribute("userName").toString());
+        user.addBoss(boss);
+        return "redirect:/overview";
     }
 }
