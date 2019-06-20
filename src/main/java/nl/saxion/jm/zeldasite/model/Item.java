@@ -1,24 +1,23 @@
 package nl.saxion.jm.zeldasite.model;
 
-import nl.saxion.jm.zeldasite.model.helper.Type;
-
 public class Item {
 
     private String name;
     private int id;
     private static int idList = 0;
-    private Type type;
+    private String type;
     private String imageName;
     private String description;
 
-    public Item(String name, Type type, String imageName, String description)
+    public Item(String name, String type, String description)
     {
         id = idList;
         idList++;
 
         this.name = name;
         this.type = type;
-        this.imageName = imageName;
+        String imageName = name.replaceAll("\\s+","");
+        this.imageName =  "../" + imageName + ".png";
         this.description = description;
     }
 
@@ -39,20 +38,11 @@ public class Item {
         this.description = description;
     }
 
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public static void setIdList(int idList) {
-        Item.idList = idList;
-    }
-
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -72,7 +62,7 @@ public class Item {
         return idList;
     }
 
-    public Type getType() {
+    public String getType() {
         return type;
     }
 

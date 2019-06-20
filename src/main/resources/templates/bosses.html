@@ -7,13 +7,35 @@
 </head>
 <body>
 <header th:insert="../fragments/menubar.html :: menu_bosses"></header>
+
+<h2>Bosses:</h2>
+
 <table>
     <tr th:each="boss:${bosses}">
         <th th:text="${boss.getName()}">Item name</th>
-        <th>Seen in: <span th:text="${boss.getSeenIn().toString()}"></span></th>
+        <th>Seen in: <span th:text="${boss.getSeenin()}"></span></th>
         <th><a th:href="@{/bosses/{bossId}(bossId=${boss.getId()})}">More info</a></th>
     </tr>
 </table>
+
+<h2>Add new boss:</h2>
+
+<form id="bossform" action="/bosses" method="post">
+    Name:<br>
+    <input type="text" name="name"><br>
+
+    Description:<br>
+    <input type="text" name="description"><br>
+
+    Game:<br>
+    <select name="seenin" form="bossform">
+        <option th:each="game:${games}" th:value="${game}" th:text="${game}"></option>
+    </select>
+
+    <input type="submit" value="Add">
+</form>
+
+
 <header th:insert="../fragments/footer.html :: footer"></header>
 
 </body>

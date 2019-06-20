@@ -1,7 +1,5 @@
 package nl.saxion.jm.zeldasite.model;
 
-import nl.saxion.jm.zeldasite.model.helper.Game;
-
 import java.util.ArrayList;
 
 public class Boss {
@@ -9,20 +7,21 @@ public class Boss {
     private String name;
     private int id;
     private static int idList = 0;
-    private Game seenIn;
+    private String seenin;
     private ArrayList<Item> weapons;
     private ArrayList<Item> spoils;
     private String imageName;
     private String description;
 
-    public Boss(String name, Game seenIn, String imageName, String description)
+    public Boss(String name, String seenin, String description)
     {
         id = idList;
         idList++;
 
         this.name = name;
-        this.seenIn = seenIn;
-        this.imageName = imageName;
+        this.seenin = seenin;
+        String imageName = name.replaceAll("\\s+","");
+        this.imageName = "../" + imageName + ".png";
         this.description = description;
 
         weapons = new ArrayList<>();
@@ -65,12 +64,12 @@ public class Boss {
         this.id = id;
     }
 
-    public Game getSeenIn() {
-        return seenIn;
+    public String getSeenin() {
+        return seenin;
     }
 
-    public void setSeenIn(Game seenIn) {
-        this.seenIn = seenIn;
+    public void setSeenIn(String seenIn) {
+        this.seenin = seenIn;
     }
 
     public ArrayList<Item> getWeapons() {

@@ -11,6 +11,7 @@ public class User {
     private String mailAddress;
     private String password;
     private ArrayList<Item> items;
+
     private ArrayList<Boss> defeatedBosses;
 
     public User(String userName, String fullName, String mailAddress, String password)
@@ -87,6 +88,14 @@ public class User {
     public int getId()
     {
         return id;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public ArrayList<Boss> getDefeatedBosses() {
+        return defeatedBosses;
     }
 
 

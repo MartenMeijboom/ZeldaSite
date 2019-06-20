@@ -2,10 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
     <title>Login - ZeldaSite</title>
 </head>
 <body>
-<header th:insert="../fragments/footer.html :: footer"></header>
+<header th:insert="../fragments/menubar.html :: menu"></header>
 
+<h2>Login:</h2>
+
+<form id="itemform" action="/login" method="post">
+    Username:<br>
+    <input type="text" name="username"><br>
+
+    Password:<br>
+    <input type="password" name="password"><br>
+
+    <input type="submit" value="Login">
+</form>
+
+<header th:insert="../fragments/footer.html :: footer"></header>
 </body>
 </html>

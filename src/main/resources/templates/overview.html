@@ -2,11 +2,61 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>My profile - ZeldaSite</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Profile - ZeldaSite</title>
 </head>
 <body>
 <header th:insert="../fragments/menubar.html :: menu_character"></header>
-<header th:insert="../fragments/footer.html :: footer"></header>
 
+<h2>Personal info:</h2>
+
+<p>Username:</p>
+<p th:text="${user.getUserName()}"></p>
+<p>Full name:</p>
+<p th:text="${user.getFullName()}"></p>
+<p>Email address:</p>
+<p th:text="${user.getMailAddress()}"></p>
+
+<h2>Collected items:</h2>
+
+<table>
+    <tr th:each="item:${myitems}">
+        <th th:text="${item.getName()}">Item name</th>
+        <th>Type: <span th:text="${item.getType()}"></span></th>
+        <th><a th:href="@{/items/{itemId}(itemId=${item.getId()})}">Go to itempage</a></th>
+    </tr>
+</table>
+
+<h2>Add an item:</h2>
+
+<form id="itemform" action="/overview" method="post">
+    Item:<br>
+    <select name="itemid" form="itemform">
+        <option th:each="item:${items}" th:value="${item.getId()}" th:text="${item.getName()}"></option>
+    </select>
+    <input type="submit" value="Add">
+</form>
+
+<h2>Defeated bosses:</h2>
+
+<table>
+    <tr th:each="boss:${mybosses}">
+        <th th:text="${boss.getName()}">Item name</th>
+        <th>Seen in: <span th:text="${boss.getSeenin()}"></span></th>
+        <th><a th:href="@{/bosses/{bossId}(bossId=${boss.getId()})}">More info</a></th>
+    </tr>
+</table>
+
+<h2>Add a boss:</h2>
+
+<form id="bossform" action="/overview" method="post">
+    Boss:<br>
+    <select name="bossid" form="bossform">
+        <option th:each="boss:${bosses}" th:value="${boss.getId()}" th:text="${boss.getName()}"></option>
+    </select>
+    <input type="submit" value="Add">
+</form>
+
+<header th:insert="../fragments/footer.html :: footer"></header>
 </body>
 </html>
