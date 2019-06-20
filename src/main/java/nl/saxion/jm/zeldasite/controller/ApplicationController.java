@@ -15,18 +15,7 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("")
-public class ApplicationController {
-
-    private ApplicationManager manager;
-
-    private ApplicationManager myManager()
-    {
-        if(manager == null)
-        {
-            manager = new ApplicationManager();
-        }
-        return manager;
-    }
+public class ApplicationController extends controller{
 
     @GetMapping(path = "")
     public String homepage()
@@ -96,39 +85,6 @@ public class ApplicationController {
         return "redirect:/bosses";
     }
 
-    @GetMapping(path = "/login")
-    public String viewLogin(HttpSession session)
-    {
-        if(session.getAttribute("userName") != null)
-        {
-            return "redirect:/overview";
-        }
-        return "login";
-    }
-
-    @GetMapping(path = "/register")
-    public String viewRegister(HttpSession session)
-    {
-        if(session.getAttribute("userName") != null)
-        {
-            return "redirect:/overview";
-        }
-        return "register";
-    }
-
-    @PostMapping(path = "/login")
-    public String verifyLogin(LoginAttempt attempt, HttpSession session)
-    {
-        User user = myManager().verifyLogin(attempt);
-        if(user != null)
-        {
-            session.setAttribute("userName", user.getUserName());
-            return "redirect:/overview";
-        }
-
-        return "redirect:/login?message=failed";
-    }
-
     @GetMapping(path = "/profile")
     public String viewProfile(HttpSession session, Model model)
     {
@@ -173,53 +129,5 @@ public class ApplicationController {
             return "overview";
         }
         return "login";
-    }
-
-    @PostMapping(path = "/register")
-    public String CreateAccount(User user, HttpSession session)
-    {
-        myManager().adduser(user);
-        session.setAttribute("userName", user.getUserName());
-        return "redirect:/overview";
-    }
-
-    @GetMapping(path = "/logout")
-    public String logout(HttpSession session, Model model)
-    {
-        if(session.getAttribute("userName") != null)
-        {
-            session.setAttribute("userName", null);
-        }
-        return "redirect:/login?message=logout";
-    }
-
-    @PostMapping(path = "/addItemToCharacter")
-    public String addItemToCharacter(Integer itemid, HttpSession session)
-    {
-        Item item = myManager().getItem(itemid);
-        User user = myManager().getUser(session.getAttribute("userName").toString());
-        user.addItem(item);
-        return "redirect:/overview";
-    }
-
-    @PostMapping(path = "/addBossToCharacter")
-    public String addBossToCharacter(Integer bossid, HttpSession session)
-    {
-        Boss boss = myManager().getBoss(bossid);
-        User user = myManager().getUser(session.getAttribute("userName").toString());
-        user.addBoss(boss);
-        return "redirect:/overview";
-    }
-
-    @PostMapping(path = "/updateUser")
-    public String updateUser(User user, HttpSession session)
-    {
-        User currentUser = myManager().getUser(session.getAttribute("userName").toString());
-        currentUser.setFullName(user.getFullName());
-        currentUser.setMailAddress(user.getMailAddress());
-        currentUser.setPassword(user.getPassword());
-        currentUser.setUserName(user.getUserName());
-        session.setAttribute("userName", currentUser.getUserName());
-        return "profile";
     }
 }
