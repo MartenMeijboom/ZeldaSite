@@ -17,22 +17,16 @@ import java.util.Date;
 public class ApplicationController extends Controller {
 
     @GetMapping(path = "")
-    public String homepage()
-    {
+    public String homepage() {
         return "home";
     }
 
     @GetMapping(path = "/profile")
-    public String viewProfile(HttpSession session, Model model, @CookieValue("lastLoginToShow") String date)
-    {
-        if(date != null)
-        {
-            if(session.getAttribute("lastLogin") != null)
-            {
+    public String viewProfile(HttpSession session, Model model, @CookieValue("lastLoginToShow") String date) {
+        if (session.getAttribute("userName") != null) {
+            if (date != null) {
                 model.addAttribute("lastlogin", date);
-            }
-            else
-            {
+            } else {
                 model.addAttribute("lastlogin", "N/A");
             }
 
@@ -41,20 +35,16 @@ public class ApplicationController extends Controller {
             model.addAttribute(user);
             return "profile";
         }
+
         return "login";
     }
 
     @GetMapping(path = "/overview")
-    public String overview(HttpSession session, Model model, @CookieValue("lastLoginToShow") String date)
-    {
-        if(session.getAttribute("userName") != null)
-        {
-            if(date != null)
-            {
+    public String overview(HttpSession session, Model model, @CookieValue("lastLoginToShow") String date) {
+        if (session.getAttribute("userName") != null) {
+            if (date != null) {
                 model.addAttribute("lastlogin", date);
-            }
-            else
-            {
+            } else {
                 model.addAttribute("lastlogin", "N/A");
             }
 
@@ -64,15 +54,13 @@ public class ApplicationController extends Controller {
             ArrayList<Item> items = myManager().getItems();
             ArrayList<Boss> bosses = myManager().getBosses();
 
-            for (Item i:myitems) {
-                if(items.contains(i))
-                {
+            for (Item i : myitems) {
+                if (items.contains(i)) {
                     items.remove(i);
                 }
             }
-            for (Boss b:mybosses) {
-                if(bosses.contains(b))
-                {
+            for (Boss b : mybosses) {
+                if (bosses.contains(b)) {
                     bosses.remove(b);
                 }
             }

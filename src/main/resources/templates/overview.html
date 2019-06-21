@@ -9,8 +9,7 @@
 <div class="bgCharacter">
     <header th:insert="../fragments/menubar.html :: menu_character"></header>
     <img>
-
-
+    
     <h2>Personal info:</h2>
     <div class="userInfo">
         Username:
@@ -71,6 +70,8 @@
                 </select>
                 <input type="submit" value="Add">
             </form>
+            <p>Last login: <span th:text="${lastlogin}"></span></p>
+
             <br><br>
         </div>
 
