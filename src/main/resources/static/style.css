@@ -68,6 +68,11 @@ body {
     background-size: cover;
 }
 
+#itemsbody
+{
+    background-color: #483D8E;
+}
+
 [tabindex="-1"]:focus {
     outline: 0 !important;
 }
