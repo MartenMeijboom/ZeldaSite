@@ -5,21 +5,29 @@
     <link rel="stylesheet" href="style.css">
     <title>Login - ZeldaSite</title>
 </head>
+
 <body>
-<header th:insert="../fragments/menubar.html :: menu"></header>
+<div class="bgLogin">
+    <header th:insert="../fragments/menubar.html :: menu"></header>
 
-<h2>Login:</h2>
+    <img>
+    <div id="centered">
+        <h2>Login:</h2>
 
-<form id="itemform" action="/login" method="post">
-    Username:<br>
-    <input type="text" name="username"><br>
+        <form id="itemform" action="/login" method="post">
+            Username:<br>
+            <input type="text" name="username"><br>
 
-    Password:<br>
-    <input type="password" name="password"><br>
+            Password:<br>
+            <input type="password" name="password"><br>
 
-    <input type="submit" value="Login">
-</form>
-<p>No Account? Click <a href="/register">here</a> to create one.</p>
+            <input type="submit" value="Login">
+        </form>
+        <p>No Account? Click <a href="/register">here</a> to create one.</p>
+    </div>
+</div>
 <header th:insert="../fragments/footer.html :: footer"></header>
+
+
 </body>
 </html>

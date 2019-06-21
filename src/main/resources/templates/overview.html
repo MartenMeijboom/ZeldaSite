@@ -6,68 +6,76 @@
     <title>Profile - ZeldaSite</title>
 </head>
 <body>
-<header th:insert="../fragments/menubar.html :: menu_character"></header>
-
-<h2>Personal info:</h2>
-
-<p>Username:</p>
-<p th:text="${user.getUserName()}"></p>
-<p>Full name:</p>
-<p th:text="${user.getFullName()}"></p>
-<p>Email address:</p>
-<p th:text="${user.getMailAddress()}"></p>
-
-<h2>Collected items:</h2>
-
-<table>
-    <tr>
-        <th><b>Name</b></th>
-        <th><b>Type</b></th>
-        <th><b></b></th>
-    </tr>
-    <tr th:each="item:${myitems}">
-        <th th:text="${item.getName()}">Item name</th>
-        <th><span th:text="${item.getType()}"></span></th>
-        <th><a th:href="@{/items/{itemId}(itemId=${item.getId()})}">Go to itempage</a></th>
-    </tr>
-</table>
-
-<h2 th:if="${items.size() > 0}">Add an item:</h2>
-
-<form id="itemform" action="/addItemToCharacter" method="post" th:if="${items.size() > 0}">
-    Item:<br>
-    <select name="itemid" form="itemform">
-        <option th:each="item:${items}" th:value="${item.getId()}" th:text="${item.getName()}"></option>
-    </select>
-    <input type="submit" value="Add">
-</form>
-
-<h2>Defeated bosses:</h2>
-
-<table>
-    <tr>
-        <th><b>Name</b></th>
-        <th><b>Seen in</b></th>
-        <th><b></b></th>
-    </tr>
-    <tr th:each="boss:${mybosses}">
-        <th th:text="${boss.getName()}">Item name</th>
-        <th><span th:text="${boss.getSeenin()}"></span></th>
-        <th><a th:href="@{/bosses/{bossId}(bossId=${boss.getId()})}">More info</a></th>
-    </tr>
-</table>
+<div class="bgCharacter">
+    <header th:insert="../fragments/menubar.html :: menu_character"></header>
+    <img>
 
 
-<h2 th:if="${bosses.size() > 0}">Add a boss:</h2>
+    <h2>Personal info:</h2>
+    <div class="userInfo">
+        Username:
+        <p th:text="${user.getUserName()}"></p>
+        Full name;
+        <p th:text="${user.getFullName()}"></p>
+        Email address:
+        <p th:text="${user.getMailAddress()}"></p>
+    </div>
 
-<form id="bossform" action="/addBossToCharacter" method="post" th:if="${bosses.size() > 0}">
-    Boss:<br>
-    <select name="bossid" form="bossform">
-        <option th:each="boss:${bosses}" th:value="${boss.getId()}" th:text="${boss.getName()}"></option>
-    </select>
-    <input type="submit" value="Add">
-</form>
-<br><br>
-<header th:insert="../fragments/footer.html :: footer"> </header>
+    <div class="addColectedItem">
+        <h2>Collected items:</h2>
+        <table>
+            <tr>
+                <th><b>Name</b></th>
+                <th><b>Type</b></th>
+                <th><b></b></th>
+            </tr>
+            <tr th:each="item:${myitems}">
+                <th th:text="${item.getName()}">Item name</th>
+                <th><span th:text="${item.getType()}"></span></th>
+                <th><a th:href="@{/items/{itemId}(itemId=${item.getId()})}">Go to itempage</a></th>
+            </tr>
+        </table>
+
+        <h2 th:if="${items.size() > 0}">Add an item:</h2>
+        <div class="addButton">
+            <form id="itemform" action="/addItemToCharacter" method="post" th:if="${items.size() > 0}">
+                Item:
+                <select name="itemid" form="itemform">
+                    <option th:each="item:${items}" th:value="${item.getId()}" th:text="${item.getName()}"></option>
+                </select>
+                <input type="submit" value="Add">
+            </form>
+        </div>
+        <h2>Defeated bosses:</h2>
+
+        <table>
+            <tr>
+                <th><b>Name</b></th>
+                <th><b>Seen in</b></th>
+                <th><b></b></th>
+            </tr>
+            <tr th:each="boss:${mybosses}">
+                <th th:text="${boss.getName()}">Item name</th>
+                <th><span th:text="${boss.getSeenin()}"></span></th>
+                <th><a th:href="@{/bosses/{bossId}(bossId=${boss.getId()})}">More info</a></th>
+            </tr>
+        </table>
+
+
+        <h2 th:if="${bosses.size() > 0}">Add a boss:</h2>
+        <div class="addButton">
+            <form id="bossform" action="/addBossToCharacter" method="post" th:if="${bosses.size() > 0}">
+                Boss:
+                <select name="bossid" form="bossform">
+                    <option th:each="boss:${bosses}" th:value="${boss.getId()}" th:text="${boss.getName()}"></option>
+                </select>
+                <input type="submit" value="Add">
+            </form>
+            <br><br>
+        </div>
+
+    </div>
+    <header th:insert="../fragments/footer.html :: footer"></header>
+</div>
 </body>
 </html>

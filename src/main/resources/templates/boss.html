@@ -1,4 +1,4 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -6,15 +6,20 @@
     <title>Boss - ZeldaSite</title>
 </head>
 <body>
-<header th:insert="../fragments/menubar.html :: menu_bosses"></header>
-<section class="imageSection">
-    <img th:src="${boss.getImage()}"/>
-</section>
-<section class="textSection">
-    <h3 th:text="${boss.getName()}"></h3>
-    <p th:text="${boss.getDescription()}"></p>
-</section>
-<header th:insert="../fragments/footer.html :: footer"></header>
+<div class="bgBoss">
+    <header th:insert="../fragments/menubar.html :: menu_bosses"></header>
+<img>
 
+    <section class="imageSection">
+        <img id="objectimg" th:src="${boss.getImage()}"/>
+    </section>
+
+    <section id="objectView">
+        <h3 th:text="${boss.getName()}"></h3>
+        <p th:text="${boss.getDescription()}"></p>
+    </section>
+
+    <header th:insert="../fragments/footer.html :: footer"></header>
+</div>
 </body>
 </html>

@@ -6,40 +6,45 @@
     <title>Items - ZeldaSite</title>
 </head>
 <body>
-<header th:insert="../fragments/menubar.html :: menu_items"></header>
+<div class="bgItems">
+    <header th:insert="../fragments/menubar.html :: menu_items"></header>
+    <img>
+    <div id="OverView">
+        <h2 class="whiteT" id="6%left">Items</h2>
 
-<h2>Items</h2>
+        <table>
+            <tr>
+                <th><b>Name</b></th>
+                <th><b>Type</b></th>
+                <th><b></b></th>
+            </tr>
+            <tr th:each="item:${items}">
+                <th th:text="${item.getName()}">Item name</th>
+                <th><span th:text="${item.getType()}"></span></th>
+                <th><a th:href="@{/items/{itemId}(itemId=${item.getId()})}">Go to itempage</a></th>
+            </tr>
+        </table>
+    </div>
 
-<table>
-    <tr>
-        <th><b>Name</b></th>
-        <th><b>Type</b></th>
-        <th><b></b></th>
-    </tr>
-<tr th:each="item:${items}">
-    <th th:text="${item.getName()}">Item name</th>
-    <th><span th:text="${item.getType()}"></span></th>
-    <th><a th:href="@{/items/{itemId}(itemId=${item.getId()})}">Go to itempage</a></th>
-</tr>
-</table>
+    <div class="whiteT" id="AddOverView">
+        <h2>Add new item:</h2>
 
-<h2>Add new item:</h2>
+        <form id="itemform" action="/items" method="post">
+            Name:<br>
+            <input type="text" name="name"><br>
 
-<form id="itemform" action="/items" method="post">
-    Name:<br>
-    <input type="text" name="name"><br>
+            Description:<br>
+            <input type="text" name="description"><br>
 
-    Description:<br>
-    <input type="text" name="description"><br>
+            Type:<br>
+            <select name="type" form="itemform">
+                <option th:each="type:${types}" th:value="${type}" th:text="${type}"></option>
+            </select>
 
-    Type:<br>
-    <select name="type" form="itemform">
-        <option th:each="type:${types}" th:value="${type}" th:text="${type}"></option>
-    </select>
-
-    <input type="submit" value="Add">
-</form>
-
-<header th:insert="../fragments/footer.html :: footer"></header>
+            <input type="submit" value="Add">
+        </form>
+    </div>
+    <header th:insert="../fragments/footer.html :: footer"></header>
+</div>
 </body>
 </html>

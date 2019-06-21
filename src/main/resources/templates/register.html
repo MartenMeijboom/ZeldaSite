@@ -6,11 +6,13 @@
     <title>Register - ZeldaSite</title>
 </head>
 <body>
+<div class="bgRegister">
 <header th:insert="../fragments/menubar.html :: menu_bosses"></header>
+    <img>
+<div id="centered">
+<h2 class="whiteT">Create account:</h2>
 
-<h2>Create account:</h2>
-
-<form id="registerform" action="/register" method="post">
+<form class="whiteT" id="registerform" action="/register" method="post">
     Username:<br>
     <input type="text" name="userName"><br>
 
@@ -25,7 +27,8 @@
 
     <input type="submit" value="Create">
 </form>
-
+</div>
 <header th:insert="../fragments/footer.html :: footer"></header>
+</div>
 </body>
 </html>

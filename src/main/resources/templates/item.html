@@ -6,15 +6,17 @@
     <title>Item - ZeldaSite</title>
 </head>
 <body>
+<div class="bgItem">
 <header th:insert="../fragments/menubar.html :: menu_items"></header>
+    <img>
 <section class="imageSection">
-    <img th:src="${item.getImage()}"/>
+    <img id="objectimg" th:src="${item.getImage()}"/>
 </section>
-<section class="textSection">
+<section id="objectView">
     <h3 th:text="${item.getName()}"></h3>
     <p th:text="${item.getDescription()}"></p>
 </section>
 <header th:insert="../fragments/footer.html :: footer"></header>
-
+</div>
 </body>
 </html>

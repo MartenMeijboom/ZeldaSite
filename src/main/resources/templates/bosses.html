@@ -5,43 +5,46 @@
     <link rel="stylesheet" href="style.css">
     <title>Bosses - ZeldaSite</title>
 </head>
-<body>
-<header th:insert="../fragments/menubar.html :: menu_bosses"></header>
+<body class="whiteT">
+<div class="bgBosses">
+    <header th:insert="../fragments/menubar.html :: menu_bosses"></header>
+    <img>
+    <div id="OverView">
+        <h2>Bosses:</h2>
 
-<h2>Bosses:</h2>
+        <table>
+            <tr>
+                <th><b>Name</b></th>
+                <th><b>Seen in</b></th>
+                <th><b></b></th>
+            </tr>
+            <tr th:each="boss:${bosses}">
+                <th th:text="${boss.getName()}">Item name</th>
+                <th><span th:text="${boss.getSeenin()}"></span></th>
+                <th><a th:href="@{/bosses/{bossId}(bossId=${boss.getId()})}">More info</a></th>
+            </tr>
+        </table>
+    </div>
 
-<table>
-    <tr>
-        <th><b>Name</b></th>
-        <th><b>Seen in</b></th>
-        <th><b></b></th>
-    </tr>
-    <tr th:each="boss:${bosses}">
-        <th th:text="${boss.getName()}">Item name</th>
-        <th><span th:text="${boss.getSeenin()}"></span></th>
-        <th><a th:href="@{/bosses/{bossId}(bossId=${boss.getId()})}">More info</a></th>
-    </tr>
-</table>
+    <div id="AddOverView">
+        <h2>Add new boss:</h2>
+        <form id="bossform" action="/bosses" method="post">
+            Name:<br>
+            <input type="text" name="name"><br>
 
-<h2>Add new boss:</h2>
+            Description:<br>
+            <input type="text" name="description"><br>
 
-<form id="bossform" action="/bosses" method="post">
-    Name:<br>
-    <input type="text" name="name"><br>
+            Game:<br>
+            <select name="seenin" form="bossform">
+                <option th:each="game:${games}" th:value="${game}" th:text="${game}"></option>
+            </select>
 
-    Description:<br>
-    <input type="text" name="description"><br>
+            <input type="submit" value="Add">
+        </form>
+    </div>
 
-    Game:<br>
-    <select name="seenin" form="bossform">
-        <option th:each="game:${games}" th:value="${game}" th:text="${game}"></option>
-    </select>
-
-    <input type="submit" value="Add">
-</form>
-
-
-<header th:insert="../fragments/footer.html :: footer"></header>
-
+    <header th:insert="../fragments/footer.html :: footer"></header>
+</div>
 </body>
 </html>

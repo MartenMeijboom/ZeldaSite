@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <title>Home - ZeldaSite</title>
 </head>
-<body>
-<header th:insert="../fragments/menubar.html :: menu_home"></header>
-<header th:insert="../fragments/footer.html :: footer"></header>
 
+<body>
+<div class="bgHome">
+
+    <header th:insert="../fragments/menubar.html :: menu_home"></header>
+
+    <img>
+
+    <div class=sidenav>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    </div>
+
+    <div class=mainHome>
+        <h2>Zelda Database.</h2>
+    </div>
+
+    <header th:insert="../fragments/footer.html :: footer"></header>
+</div>
 </body>
+
 </html>
