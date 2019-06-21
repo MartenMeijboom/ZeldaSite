@@ -9,15 +9,14 @@ public class Item {
     private String imageName;
     private String description;
 
-    public Item(String name, String type, String description)
-    {
+    public Item(String name, String type, String description) {
         id = idList;
         idList++;
 
         this.name = name;
         this.type = type;
-        String imageName = name.replaceAll("\\s+","");
-        this.imageName =  "../" + imageName + ".png";
+        String imageName = name.replaceAll("\\s+", "");
+        this.imageName = "../" + imageName + ".png";
         this.description = description;
     }
 

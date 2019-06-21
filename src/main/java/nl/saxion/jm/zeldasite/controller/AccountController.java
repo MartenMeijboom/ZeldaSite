@@ -25,8 +25,7 @@ import java.util.Date;
 public class AccountController extends Controller {
 
     @PostMapping(path = "/updateUser")
-    public String updateUser(User user, HttpSession session)
-    {
+    public String updateUser(User user, HttpSession session) {
         User currentUser = myManager().getUser(session.getAttribute("userName").toString());
         currentUser.setFullName(user.getFullName());
         currentUser.setMailAddress(user.getMailAddress());
@@ -37,70 +36,54 @@ public class AccountController extends Controller {
     }
 
     @PostMapping(path = "/register")
-    public String CreateAccount(User user, HttpSession session)
-    {
+    public String CreateAccount(User user, HttpSession session) {
         myManager().adduser(user);
         session.setAttribute("userName", user.getUserName());
         return "redirect:/overview";
     }
 
     @GetMapping(path = "/logout")
-    public String logout(HttpSession session, Model model)
-    {
-        if(session.getAttribute("userName") != null)
-        {
+    public String logout(HttpSession session, Model model) {
+        if (session.getAttribute("userName") != null) {
             session.setAttribute("userName", null);
         }
         return "redirect:/login?message=logout";
     }
 
     @GetMapping(path = "/login")
-    public String viewLogin(HttpSession session)
-    {
-        if(session.getAttribute("userName") != null)
-        {
+    public String viewLogin(HttpSession session) {
+        if (session.getAttribute("userName") != null) {
             return "redirect:/overview";
         }
         return "login";
     }
 
     @GetMapping(path = "/register")
-    public String viewRegister(HttpSession session)
-    {
-        if(session.getAttribute("userName") != null)
-        {
+    public String viewRegister(HttpSession session) {
+        if (session.getAttribute("userName") != null) {
             return "redirect:/overview";
         }
         return "register";
     }
 
     @PostMapping(path = "/login")
-    public String verifyLogin(LoginAttempt attempt, HttpSession session, HttpServletResponse response, @Nullable @CookieValue("lastLogin") String cdate)
-    {
+    public String verifyLogin(LoginAttempt attempt, HttpSession session, HttpServletResponse response, @Nullable @CookieValue("lastLogin") String cdate) {
         User user = myManager().verifyLogin(attempt);
-        if(user != null)
-        {
+        if (user != null) {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
-            if(cdate == null)
-            {
-                try
-                {
+            if (cdate == null) {
+                try {
                     String encodedeCookie = URLEncoder.encode(dateFormat.format(date), "UTF-8");
                     Cookie cookie = new Cookie("lastLogin", encodedeCookie);
                     response.addCookie(cookie);
                     cookie = new Cookie("lastLoginToShow", encodedeCookie);
                     response.addCookie(cookie);
-                }
-                catch (UnsupportedEncodingException e)
-                {
+                } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-            }
-            else
-            {
-                try
-                {
+            } else {
+                try {
                     String encodedeCookie = URLEncoder.encode(cdate, "UTF-8");
                     Cookie cookie = new Cookie("lastLoginToShow", encodedeCookie);
                     response.addCookie(cookie);
@@ -108,9 +91,7 @@ public class AccountController extends Controller {
                     encodedeCookie = URLEncoder.encode(dateFormat.format(date), "UTF-8");
                     cookie = new Cookie("lastLogin", encodedeCookie);
                     response.addCookie(cookie);
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

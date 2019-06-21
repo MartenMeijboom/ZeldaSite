@@ -6,10 +6,8 @@ abstract class Controller {
 
     static private ApplicationManager manager;
 
-    ApplicationManager myManager()
-    {
-        if(manager == null)
-        {
+    ApplicationManager myManager() {
+        if (manager == null) {
             manager = new ApplicationManager();
         }
         return manager;

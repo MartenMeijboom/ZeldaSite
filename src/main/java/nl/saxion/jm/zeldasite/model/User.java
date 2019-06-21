@@ -14,8 +14,7 @@ public class User {
 
     private ArrayList<Boss> defeatedBosses;
 
-    public User(String userName, String fullName, String mailAddress, String password)
-    {
+    public User(String userName, String fullName, String mailAddress, String password) {
         id = idList;
         idList++;
 
@@ -28,32 +27,26 @@ public class User {
         defeatedBosses = new ArrayList<>();
     }
 
-    public boolean correctPassword(String password)
-    {
-        if(this.password.equals(password))
-        {
+    public boolean correctPassword(String password) {
+        if (this.password.equals(password)) {
             return true;
         }
         return false;
     }
 
-    public void addItem(Item item)
-    {
+    public void addItem(Item item) {
         items.add(item);
     }
 
-    public void removeItem(Item item)
-    {
+    public void removeItem(Item item) {
         items.remove(item);
     }
 
-    public void addBoss(Boss boss)
-    {
+    public void addBoss(Boss boss) {
         defeatedBosses.add(boss);
     }
 
-    public void removeBoss(Boss boss)
-    {
+    public void removeBoss(Boss boss) {
         defeatedBosses.remove(boss);
     }
 
@@ -85,8 +78,7 @@ public class User {
         return password;
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -20,8 +21,7 @@ public class ApplicationManager {
     private ArrayList<Boss> bosses;
     private ArrayList<Item> items;
 
-    public ApplicationManager()
-    {
+    public ApplicationManager() {
         users = new ArrayList<>();
         bosses = new ArrayList<>();
         items = new ArrayList<>();
@@ -29,8 +29,7 @@ public class ApplicationManager {
         generateTestData();
     }
 
-    private void generateTestData()
-    {
+    private void generateTestData() {
         User user = new User("test", "Pieter Post", "sdfijbsadfjasijfbasi.com", "123");
         adduser(user);
         user = new User("marten", "Marten Meijboom", "test@testmail.com", "123");
@@ -59,9 +58,8 @@ public class ApplicationManager {
     }
 
 
-    public void readBossesFromJson(String filename){
-        try
-        {
+    public void readBossesFromJson(String filename) {
+        try {
             String content = new String(Files.readAllBytes(Paths.get(filename)));
             JSONArray jsonArray = new JSONArray(content);
 
@@ -70,76 +68,61 @@ public class ApplicationManager {
                 Boss boss = new Boss(jsonObject.getString("name"), jsonObject.getString("seenin"), jsonObject.getString("description"));
                 bosses.add(boss);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-       catch (Exception e)
-       {
-           e.printStackTrace();
-       }
     }
 
 
-
-    public void adduser(User user)
-    {
+    public void adduser(User user) {
         users.add(user);
     }
 
-    public void addBoss(Boss boss)
-    {
+    public void addBoss(Boss boss) {
         bosses.add(boss);
     }
 
-    public void addItem(Item item)
-    {
+    public void addItem(Item item) {
         items.add(item);
     }
 
-    public User getUser(int id)
-    {
-        for (User u:users) {
-            if(u.getId() == id)
-            {
+    public User getUser(int id) {
+        for (User u : users) {
+            if (u.getId() == id) {
                 return u;
             }
         }
         return null;
     }
 
-    public User getUser(String userName)
-    {
-        for (User u:users) {
-            if(u.getUserName().equals(userName))
-            {
+    public User getUser(String userName) {
+        for (User u : users) {
+            if (u.getUserName().equals(userName)) {
                 return u;
             }
         }
         return null;
     }
 
-    public Boss getBoss(int id)
-    {
-        for (Boss b:bosses) {
-            if(b.getId() == id)
-            {
+    public Boss getBoss(int id) {
+        for (Boss b : bosses) {
+            if (b.getId() == id) {
                 return b;
             }
         }
         return null;
     }
 
-    public Item getItem(int id)
-    {
-        for (Item i:items) {
-            if(i.getId() == id)
-            {
+    public Item getItem(int id) {
+        for (Item i : items) {
+            if (i.getId() == id) {
                 return i;
             }
         }
         return null;
     }
 
-    public String[] getItemNames()
-    {
+    public String[] getItemNames() {
         String[] itemNames = new String[items.size()];
         for (int i = 0; i < items.size(); i++) {
             itemNames[i] = items.get(i).getName();
@@ -147,54 +130,49 @@ public class ApplicationManager {
         return itemNames;
     }
 
-    public String[] getTypeNames()
-    {
+    public String[] getTypeNames() {
         String[] names = new String[items.size()];
         for (int i = 0; i < items.size(); i++) {
             names[i] = items.get(i).getType();
         }
 
-        Set<String> temp = new LinkedHashSet<String>( Arrays.asList( names ) );
-        names = temp.toArray( new String[temp.size()] );
+        Set<String> temp = new LinkedHashSet<String>(Arrays.asList(names));
+        names = temp.toArray(new String[temp.size()]);
 
         //Arrays.sort(names);
 
         return names;
     }
 
-    public String[] getSeenInNames()
-    {
+    public String[] getSeenInNames() {
         String[] names = new String[bosses.size()];
         for (int i = 0; i < bosses.size(); i++) {
             names[i] = bosses.get(i).getSeenin();
         }
 
-        Set<String> temp = new LinkedHashSet<String>( Arrays.asList( names ) );
-        names = temp.toArray( new String[temp.size()] );
+        Set<String> temp = new LinkedHashSet<String>(Arrays.asList(names));
+        names = temp.toArray(new String[temp.size()]);
 
         //Arrays.sort(names);
 
         return names;
     }
 
-    public ArrayList<Item> getItems()
-    {
+    public ArrayList<Item> getItems() {
         ArrayList<Item> temp = new ArrayList<>();
-        for (Item i:items) {
-            if(!i.getName().equals("1")) {
+        for (Item i : items) {
+            if (!i.getName().equals("1")) {
                 temp.add(i);
             }
         }
         return temp;
     }
 
-    public ArrayList<Item> getItems(String query)
-    {
+    public ArrayList<Item> getItems(String query) {
         ArrayList<Item> temp = new ArrayList<>();
-        for (Item i:items) {
-            if(!i.getName().equals("1")) {
-                if(i.getName().toLowerCase().indexOf(query.toLowerCase()) !=-1)
-                {
+        for (Item i : items) {
+            if (!i.getName().equals("1")) {
+                if (i.getName().toLowerCase().indexOf(query.toLowerCase()) != -1) {
                     temp.add(i);
                 }
             }
@@ -203,25 +181,23 @@ public class ApplicationManager {
         return temp;
     }
 
-    public ArrayList<Boss> getBosses(){
+    public ArrayList<Boss> getBosses() {
         ArrayList<Boss> temp = new ArrayList<>();
         temp.addAll(bosses);
         return temp;
     }
 
-    public ArrayList<Boss> getBosses(String query){
+    public ArrayList<Boss> getBosses(String query) {
         ArrayList<Boss> temp = new ArrayList<>();
-        for (Boss b:bosses) {
-            if(b.getName().toLowerCase().indexOf(query.toLowerCase()) !=-1)
-            {
+        for (Boss b : bosses) {
+            if (b.getName().toLowerCase().indexOf(query.toLowerCase()) != -1) {
                 temp.add(b);
             }
         }
         return temp;
     }
 
-    public String[] getBossNames()
-    {
+    public String[] getBossNames() {
         String[] itemNames = new String[bosses.size()];
         for (int i = 0; i < bosses.size(); i++) {
             itemNames[i] = bosses.get(i).getName();
@@ -229,13 +205,10 @@ public class ApplicationManager {
         return itemNames;
     }
 
-    public User verifyLogin(LoginAttempt attempt)
-    {
-        for (User u:users) {
-            if(attempt.getUsername().equals(u.getUserName()))
-            {
-                if(attempt.getPassword().equals(u.getPassword()))
-                {
+    public User verifyLogin(LoginAttempt attempt) {
+        for (User u : users) {
+            if (attempt.getUsername().equals(u.getUserName())) {
+                if (attempt.getPassword().equals(u.getPassword())) {
                     return u;
                 }
             }
