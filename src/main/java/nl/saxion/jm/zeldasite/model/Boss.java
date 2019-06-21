@@ -30,25 +30,6 @@ public class Boss {
         spoils = new ArrayList<>();
     }
 
-    public Boss(JSONObject jsonObject) {
-        try {
-            this.name = jsonObject.getString("name");
-            this.seenin = jsonObject.getString("seenin");
-            this.description = jsonObject.getString("description");
-
-            String imageName = name.replaceAll("\\s+", "");
-            this.imageName = "../" + imageName + ".png";
-
-            id = idList;
-            idList++;
-
-            weapons = new ArrayList<>();
-            spoils = new ArrayList<>();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void removeSpoil(Item spoil) {
         spoils.remove(spoil);
     }

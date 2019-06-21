@@ -67,7 +67,7 @@ public class ApplicationManager {
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                Boss boss = new Boss(jsonObject);
+                Boss boss = new Boss(jsonObject.getString("name"), jsonObject.getString("seenin"), jsonObject.getString("description"));
                 bosses.add(boss);
             }
         }
@@ -76,6 +76,7 @@ public class ApplicationManager {
            e.printStackTrace();
        }
     }
+
 
     public void adduser(User user)
     {
