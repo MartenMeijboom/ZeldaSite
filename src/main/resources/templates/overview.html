@@ -7,10 +7,6 @@
 </head>
 <body>
 <header th:insert="../fragments/menubar.html :: menu_character"></header>
-
-
-<p>Last login: <span th:text="${lastlogin}"></span></p>
-
 <h2>Personal info:</h2>
 
 <p>Username:</p>
@@ -70,6 +66,7 @@
     </select>
     <input type="submit" value="Add">
 </form>
+<p>Last login: <span th:text="${lastlogin}"></span></p>
 <br><br>
 <header th:insert="../fragments/footer.html :: footer"> </header>
 </body>

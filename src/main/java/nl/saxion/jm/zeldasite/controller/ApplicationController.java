@@ -23,13 +23,13 @@ public class ApplicationController extends Controller {
     }
 
     @GetMapping(path = "/profile")
-    public String viewProfile(HttpSession session, Model model)
+    public String viewProfile(HttpSession session, Model model, @CookieValue("lastLoginToShow") String date)
     {
-        if(session.getAttribute("userName") != null)
+        if(date != null)
         {
             if(session.getAttribute("lastLogin") != null)
             {
-                model.addAttribute("lastlogin", session.getAttribute("LastLoginToShow"));
+                model.addAttribute("lastlogin", date);
             }
             else
             {
@@ -45,13 +45,13 @@ public class ApplicationController extends Controller {
     }
 
     @GetMapping(path = "/overview")
-    public String overview(HttpSession session, Model model)
+    public String overview(HttpSession session, Model model, @CookieValue("lastLoginToShow") String date)
     {
         if(session.getAttribute("userName") != null)
         {
-            if(session.getAttribute("lastLogin") != null)
+            if(date != null)
             {
-                model.addAttribute("lastlogin", session.getAttribute("LastLoginToShow"));
+                model.addAttribute("lastlogin", date);
             }
             else
             {

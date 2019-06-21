@@ -40,6 +40,7 @@ public class ApplicationManager {
         items.add(item);
         item = new Item("Blue Ring", "Ring", "In The Legend of Zelda, Link can equip the Blue Ring to take half the amount of damage he would normally.[4] In the First Quest, it can be purchased for 250 Rupees in a Shop within a Cave accessed through a staircase hidden beneath an Armos. In the Second Quest, it is sold for 250 Rupees in a different location in the northeastern portion of Hyrule. While Link has the Blue Ring equipped, his tunic is white. Certain characters, items, and enemies share colors with Link's tunic and will appear white while Link has the Blue Ring equipped, such as Princess Zelda's dress, the Arrow, and the whiskers of a Pols Voice. The Blue Ring can be replaced with the Red Ring found in Level-9, which reduces the amount of damage Link takes to a quarter of what he normally would.");
         items.add(item);
+        user.addItem(item);
         item = new Item("1", "Weapon", "");
         items.add(item);
         item = new Item("1", "Armor", "");
@@ -47,6 +48,7 @@ public class ApplicationManager {
 
         Boss boss = new Boss("Gooma", "The Adventure of Link (1988)", "Gooma is the boss of the Ocean Palace, the fifth dungeon in Zelda II: The Adventure of Link. He is a giant humanoid monster that attacks with a Ball and Chain. The name Gooma was already used in the Japanese localization of the game for the Guma. In the Japanese original, Gooma's name is Jianto, or simply Giant. Interestingly in his artwork, Gooma bears resemblance to the Minotaur, a legendary creature with the body of a man and the head of a bull, known primarily from Greek mythology. According to the Playing with Power section for the game, Gooma was meant to be a troll.");
         bosses.add(boss);
+        user.addBoss(boss);
         boss = new Boss("Thunderbird", "The Adventure of Link (1988)", "Thunderbird is the penultimate boss of Zelda II: The Adventure of Link. It is a giant, winged creature that resides within the Great Palace. Link fights Thunderbird just prior to the final boss, Dark Link. Notably, Thunderbird is the only boss battle in the game fought without the specific battle music playing, as the Great Palace dungeon theme keeps playing throughout the battle. It is also the only mini-boss in the game, not being fought at the end of the dungeon (or in this game, palace) it resides in, instead the real boss being Link's own shadow.");
         bosses.add(boss);
         user.addBoss(boss);
@@ -54,9 +56,6 @@ public class ApplicationManager {
         bosses.add(boss);
 
         readBossesFromJson("bosses.json");
-
-        user.addItem(item);
-        user.addBoss(boss);
     }
 
 
