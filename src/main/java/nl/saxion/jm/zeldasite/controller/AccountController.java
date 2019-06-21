@@ -75,6 +75,14 @@ public class AccountController extends Controller {
         {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date date = new Date();
+            if(session.getAttribute("lastLogin") != null)
+            {
+                session.setAttribute("LastLoginToShow", session.getAttribute("lastLogin"));
+            }
+            else
+            {
+                session.setAttribute("LastLoginToShow", dateFormat.format(date));
+            }
             session.setAttribute("lastLogin", dateFormat.format(date));
 
             session.setAttribute("userName", user.getUserName());

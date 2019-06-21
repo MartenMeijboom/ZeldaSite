@@ -29,7 +29,7 @@ public class ApplicationController extends Controller {
         {
             if(session.getAttribute("lastLogin") != null)
             {
-                model.addAttribute("lastlogin", session.getAttribute("lastLogin"));
+                model.addAttribute("lastlogin", session.getAttribute("LastLoginToShow"));
             }
             else
             {
@@ -51,7 +51,7 @@ public class ApplicationController extends Controller {
         {
             if(session.getAttribute("lastLogin") != null)
             {
-                model.addAttribute("lastlogin", session.getAttribute("lastLogin"));
+                model.addAttribute("lastlogin", session.getAttribute("LastLoginToShow"));
             }
             else
             {
