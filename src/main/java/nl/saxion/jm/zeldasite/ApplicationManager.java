@@ -5,10 +5,14 @@ import nl.saxion.jm.zeldasite.model.Boss;
 import nl.saxion.jm.zeldasite.model.User;
 import nl.saxion.jm.zeldasite.model.Item;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ApplicationManager {
 
@@ -32,12 +36,13 @@ public class ApplicationManager {
         user = new User("marten", "Marten Meijboom", "test@testmail.com", "123");
         adduser(user);
 
-
         Item item = new Item("Item1", "testType", "");
         items.add(item);
-        item = new Item("Blue Ring", "Rings", "In The Legend of Zelda, Link can equip the Blue Ring to take half the amount of damage he would normally.[4] In the First Quest, it can be purchased for 250 Rupees in a Shop within a Cave accessed through a staircase hidden beneath an Armos. In the Second Quest, it is sold for 250 Rupees in a different location in the northeastern portion of Hyrule. While Link has the Blue Ring equipped, his tunic is white. Certain characters, items, and enemies share colors with Link's tunic and will appear white while Link has the Blue Ring equipped, such as Princess Zelda's dress, the Arrow, and the whiskers of a Pols Voice. The Blue Ring can be replaced with the Red Ring found in Level-9, which reduces the amount of damage Link takes to a quarter of what he normally would.");
+        item = new Item("Blue Ring", "Ring", "In The Legend of Zelda, Link can equip the Blue Ring to take half the amount of damage he would normally.[4] In the First Quest, it can be purchased for 250 Rupees in a Shop within a Cave accessed through a staircase hidden beneath an Armos. In the Second Quest, it is sold for 250 Rupees in a different location in the northeastern portion of Hyrule. While Link has the Blue Ring equipped, his tunic is white. Certain characters, items, and enemies share colors with Link's tunic and will appear white while Link has the Blue Ring equipped, such as Princess Zelda's dress, the Arrow, and the whiskers of a Pols Voice. The Blue Ring can be replaced with the Red Ring found in Level-9, which reduces the amount of damage Link takes to a quarter of what he normally would.");
         items.add(item);
-        item = new Item("TestItem12", "testType","");
+        item = new Item("1", "Weapon", "");
+        items.add(item);
+        item = new Item("1", "Armor", "");
         items.add(item);
 
         Boss boss = new Boss("Gooma", "The Adventure of Link (1988)", "Gooma is the boss of the Ocean Palace, the fifth dungeon in Zelda II: The Adventure of Link. He is a giant humanoid monster that attacks with a Ball and Chain. The name Gooma was already used in the Japanese localization of the game for the Guma. In the Japanese original, Gooma's name is Jianto, or simply Giant. Interestingly in his artwork, Gooma bears resemblance to the Minotaur, a legendary creature with the body of a man and the head of a bull, known primarily from Greek mythology. According to the Playing with Power section for the game, Gooma was meant to be a troll.");
@@ -48,8 +53,29 @@ public class ApplicationManager {
         boss = new Boss("Vah Ruta", "Breath of the Wild (2017)", "Vah Ruta is a mechanical construct in The Legend of Zelda: Breath of the Wild. It is one of the four Divine Beasts. Vah Ruta is made from Ancient Sheikah technology; it takes the form of a giant elephant in the East Reservoir Lake in Lanayru Great Spring. Ganon sent Waterblight Ganon to corrupt it, transforming it into one of the main dungeons. Link must defeat this boss to free Vah Ruta.");
         bosses.add(boss);
 
+        readBossesFromJson("bosses.json");
+
         user.addItem(item);
         user.addBoss(boss);
+    }
+
+
+    public void readBossesFromJson(String filename){
+        try
+        {
+            String content = new String(Files.readAllBytes(Paths.get(filename)));
+            JSONArray jsonArray = new JSONArray(content);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                Boss boss = new Boss(jsonObject);
+                bosses.add(boss);
+            }
+        }
+       catch (Exception e)
+       {
+           e.printStackTrace();
+       }
     }
 
     public void adduser(User user)
@@ -153,13 +179,43 @@ public class ApplicationManager {
     public ArrayList<Item> getItems()
     {
         ArrayList<Item> temp = new ArrayList<>();
-        temp.addAll(items);
+        for (Item i:items) {
+            if(!i.getName().equals("1")) {
+                temp.add(i);
+            }
+        }
+        return temp;
+    }
+
+    public ArrayList<Item> getItems(String query)
+    {
+        ArrayList<Item> temp = new ArrayList<>();
+        for (Item i:items) {
+            if(!i.getName().equals("1")) {
+                if(i.getName().toLowerCase().indexOf(query.toLowerCase()) !=-1)
+                {
+                    temp.add(i);
+                }
+            }
+        }
+
         return temp;
     }
 
     public ArrayList<Boss> getBosses(){
         ArrayList<Boss> temp = new ArrayList<>();
         temp.addAll(bosses);
+        return temp;
+    }
+
+    public ArrayList<Boss> getBosses(String query){
+        ArrayList<Boss> temp = new ArrayList<>();
+        for (Boss b:bosses) {
+            if(b.getName().toLowerCase().indexOf(query.toLowerCase()) !=-1)
+            {
+                temp.add(b);
+            }
+        }
         return temp;
     }
 

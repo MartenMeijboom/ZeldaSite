@@ -1,20 +1,21 @@
 package nl.saxion.jm.zeldasite.controller;
 
 import nl.saxion.jm.zeldasite.helper.LoginAttempt;
-import nl.saxion.jm.zeldasite.model.Boss;
-import nl.saxion.jm.zeldasite.model.Item;
 import nl.saxion.jm.zeldasite.model.User;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-@Controller
+@org.springframework.stereotype.Controller
 @RequestMapping("")
-public class accountController extends controller{
+public class AccountController extends Controller {
 
     @PostMapping(path = "/updateUser")
     public String updateUser(User user, HttpSession session)
@@ -26,24 +27,6 @@ public class accountController extends controller{
         currentUser.setUserName(user.getUserName());
         session.setAttribute("userName", currentUser.getUserName());
         return "profile";
-    }
-
-    @PostMapping(path = "/addItemToCharacter")
-    public String addItemToCharacter(Integer itemid, HttpSession session)
-    {
-        Item item = myManager().getItem(itemid);
-        User user = myManager().getUser(session.getAttribute("userName").toString());
-        user.addItem(item);
-        return "redirect:/overview";
-    }
-
-    @PostMapping(path = "/addBossToCharacter")
-    public String addBossToCharacter(Integer bossid, HttpSession session)
-    {
-        Boss boss = myManager().getBoss(bossid);
-        User user = myManager().getUser(session.getAttribute("userName").toString());
-        user.addBoss(boss);
-        return "redirect:/overview";
     }
 
     @PostMapping(path = "/register")
@@ -90,6 +73,10 @@ public class accountController extends controller{
         User user = myManager().verifyLogin(attempt);
         if(user != null)
         {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            session.setAttribute("lastLogin", dateFormat.format(date));
+
             session.setAttribute("userName", user.getUserName());
             return "redirect:/overview";
         }

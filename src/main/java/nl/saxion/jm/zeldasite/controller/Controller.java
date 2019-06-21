@@ -2,7 +2,7 @@ package nl.saxion.jm.zeldasite.controller;
 
 import nl.saxion.jm.zeldasite.ApplicationManager;
 
-abstract class controller {
+abstract class Controller {
 
     static private ApplicationManager manager;
 
