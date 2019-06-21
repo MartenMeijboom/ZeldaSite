@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Aquamentus",
+    "seenin": "The Legend of Zelda (1987)",
+    "description": "Aquamentus (アクオメンタス Akuomentasu?) is a boss from The Legend of Zelda. It is a dragon with a distinctive single horn on its snout. Aquamentus is the boss of levels Level 1 and Level 7 during the First Quest and levels Level 1 and Level 4 during the Second Quest. However, in the latter, it is only a regular enemy."
+  },
+  {
+    "name": "Dodongo",
+    "seenin": "The Legend of Zelda (1987)",
+    "description": "Dodongo (ドドンゴ Dodongo?) is a boss from The Legend of Zelda. This hulking dinosaur is the boss of Level 2. It closely resembles a Triceratops. Dodongo is vulnerable to smoke, produced by Bombs, as alluded to by the Old Man. Several Dodongos appear as mini-bosses in later dungeons, and are defeated in the same manner as the first."
+  },
+  {
+    "name": "Manhandla",
+    "seenin": "The Legend of Zelda (1987)",
+    "description": "Manhandla (テスチタート Tesu Chitāto?, Testitart) is the boss of Level 3, the third dungeon in The Legend of Zelda. It is a large, mobile, carnivorous plant with four heads surrounding an invulnerable middle. Each head can also spit unblockable fireballs. To defeat it, Link has to defeat all four heads. He can either slash its heads with his sword or drop bombs near its middle. The more damage Manhandla takes, the faster it moves. Manhandla reappears as a mini-boss in the fourth and eighth dungeons."
+  },
+  {
+    "name": "Ganon",
+    "seenin": "A Link to the Past (1992)",
+    "description": "Ganon (邪悪の王ガノン Jaaku no Ō Ganon?, King of Evil: Ganon) is the final boss of The Legend of Zelda: A Link to the Past. Link battles this hideous monster within the Pyramid."
+  },
+  {
+    "name": "Armos Knights",
+    "seenin": "A Link to the Past (1992)",
+    "description": "Armos Knights (デグアモス Degu Amosu?, Big Armos) are the bosses of the Eastern Palace, the first dungeon in the The Legend of Zelda: A Link to the Past. They consist of six blue statues that, despite being armed with swords and shields, only hop around in predefined patterns. They reappear as a mini-boss in Ganon's Tower in the Dark World. They are also one of only two bosses to not perish via fiery explosions, the only other being Agahnim in both fights against him."
+  },
+  {
+    "name": "Bongo Bongo",
+    "seenin": "Ocarina of Time (1998)",
+    "description": "Phantom Shadow Beast: Bongo Bongo (暗黒幻影獣ボンゴボンゴ Ankoku Gen'eijū Bongo Bongo?, Dark Phantom Beast: Bongo Bongo) is the boss of the Shadow Temple, the seventh dungeon in The Legend of Zelda: Ocarina of Time."
+  },
+  {
+    "name": "Dharkstare",
+    "seenin": "A Link Between Worlds (2013)",
+    "description": "Dharkstare is the boss of Ice Ruins, a dungeon in Lorule in The Legend of Zelda: A Link Between Worlds."
+  },
+  {
+    "name": "Bilocyte",
+    "seenin": "Skyward Sword (2011)",
+    "description": "Ocular Parasite: Bilocyte (巨眼寄生種パラスパラス Kyōgan Kiseishū Parasuparasu?, Giant-eyed Parasite: Paras Paras) is a boss in The Legend of Zelda: Skyward Sword. It is encountered on the enormous whale-like creature Levias."
+  }
+ 
+]

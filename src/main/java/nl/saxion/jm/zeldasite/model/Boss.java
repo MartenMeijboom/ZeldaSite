@@ -1,5 +1,8 @@
 package nl.saxion.jm.zeldasite.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class Boss {
@@ -13,14 +16,13 @@ public class Boss {
     private String imageName;
     private String description;
 
-    public Boss(String name, String seenin, String description)
-    {
+    public Boss(String name, String seenin, String description) {
         id = idList;
         idList++;
 
         this.name = name;
         this.seenin = seenin;
-        String imageName = name.replaceAll("\\s+","");
+        String imageName = name.replaceAll("\\s+", "");
         this.imageName = "../" + imageName + ".png";
         this.description = description;
 
@@ -28,23 +30,38 @@ public class Boss {
         spoils = new ArrayList<>();
     }
 
-    public void removeSpoil(Item spoil)
-    {
+    public Boss(JSONObject jsonObject) {
+        try {
+            this.name = jsonObject.getString("name");
+            this.seenin = jsonObject.getString("seenin");
+            this.description = jsonObject.getString("description");
+
+            String imageName = name.replaceAll("\\s+", "");
+            this.imageName = "../" + imageName + ".png";
+
+            id = idList;
+            idList++;
+
+            weapons = new ArrayList<>();
+            spoils = new ArrayList<>();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeSpoil(Item spoil) {
         spoils.remove(spoil);
     }
 
-    public void addSpoil(Item spoil)
-    {
+    public void addSpoil(Item spoil) {
         spoils.add(spoil);
     }
 
-    public void removeWeapon(Item weapon)
-    {
+    public void removeWeapon(Item weapon) {
         weapons.remove(weapon);
     }
 
-    public void addWeapon(Item weapon)
-    {
+    public void addWeapon(Item weapon) {
         weapons.add(weapon);
     }
 
