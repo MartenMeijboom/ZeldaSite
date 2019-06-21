@@ -21,7 +21,7 @@
             <tr th:each="item:${items}">
                 <th th:text="${item.getName()}">Item name</th>
                 <th><span th:text="${item.getType()}"></span></th>
-                <th><a th:href="@{/items/{itemId}(itemId=${item.getId()})}">Go to itempage</a></th>
+                <th><a th:href="@{/items/{itemId}(itemId=${item.getId()})}">More info</a></th>
             </tr>
         </table>
     </div>

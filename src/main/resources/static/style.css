@@ -548,3 +548,8 @@ template {
 [hidden] {
     display: none !important;
 }
+
+table tr th
+{
+    padding: 3px;
+}
