@@ -1,8 +1,5 @@
 package nl.saxion.jm.zeldasite.model;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class Boss {

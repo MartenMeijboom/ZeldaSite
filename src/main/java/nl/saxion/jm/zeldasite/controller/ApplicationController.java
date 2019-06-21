@@ -1,5 +1,6 @@
 package nl.saxion.jm.zeldasite.controller;
 
+import io.micrometer.core.lang.Nullable;
 import nl.saxion.jm.zeldasite.model.Boss;
 import nl.saxion.jm.zeldasite.model.Item;
 import nl.saxion.jm.zeldasite.model.User;
@@ -22,7 +23,7 @@ public class ApplicationController extends Controller {
     }
 
     @GetMapping(path = "/profile")
-    public String viewProfile(HttpSession session, Model model, @CookieValue("lastLoginToShow") String date) {
+    public String viewProfile(HttpSession session, Model model, @Nullable @CookieValue("lastLoginToShow") String date) {
         if (session.getAttribute("userName") != null) {
             if (date != null) {
                 model.addAttribute("lastlogin", date);
@@ -40,7 +41,7 @@ public class ApplicationController extends Controller {
     }
 
     @GetMapping(path = "/overview")
-    public String overview(HttpSession session, Model model, @CookieValue("lastLoginToShow") String date) {
+    public String overview(HttpSession session, Model model, @Nullable @CookieValue("lastLoginToShow") String date) {
         if (session.getAttribute("userName") != null) {
             if (date != null) {
                 model.addAttribute("lastlogin", date);

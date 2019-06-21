@@ -78,6 +78,7 @@ public class ApplicationManager {
     }
 
 
+
     public void adduser(User user)
     {
         users.add(user);
