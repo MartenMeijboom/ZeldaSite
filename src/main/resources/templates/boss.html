@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="../style.css">
     <title>Boss - ZeldaSite</title>
 </head>
-<body>
+<body id="bosbody">
 <div class="bgBoss">
     <header th:insert="../fragments/menubar.html :: menu_bosses"></header>
 <img>
@@ -14,12 +14,11 @@
         <img id="objectimg" th:src="${boss.getImage()}"/>
     </section>
 
-    <section id="objectView">
+    <section id="objectView" class="whiteT">
         <h3 th:text="${boss.getName()}"></h3>
         <p th:text="${boss.getDescription()}"></p>
     </section>
-
-    <header th:insert="../fragments/footer.html :: footer"></header>
 </div>
+<header th:insert="../fragments/footer.html :: footer"></header>
 </body>
 </html>

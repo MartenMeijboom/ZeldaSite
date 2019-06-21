@@ -7,28 +7,28 @@
 </head>
 <body>
 <div class="bgRegister">
-<header th:insert="../fragments/menubar.html :: menu_bosses"></header>
+    <header th:insert="../fragments/menubar.html :: menu_bosses"></header>
     <img>
-<div id="centered">
-<h2 class="whiteT">Create account:</h2>
+    <div id="centered">
+        <h2 class="whiteT">Create account:</h2>
 
-<form class="whiteT" id="registerform" action="/register" method="post">
-    Username:<br>
-    <input type="text" name="userName"><br>
+        <form class="whiteT" id="registerform" action="/register" method="post">
+            Username:<br>
+            <input type="text" name="userName"><br>
 
-    Full name:<br>
-    <input type="text" name="fullName"><br>
+            Full name:<br>
+            <input type="text" name="fullName"><br>
 
-    Email address:<br>
-    <input type="text" name="mailAddress"><br>
+            Email address:<br>
+            <input type="text" name="mailAddress"><br>
 
-    Password:<br>
-    <input type="password" name="password"><br>
+            Password:<br>
+            <input type="password" name="password"><br>
 
-    <input type="submit" value="Create">
-</form>
-</div>
-<header th:insert="../fragments/footer.html :: footer"></header>
+            <input type="submit" value="Create">
+        </form>
+    </div>
+    <header th:insert="../fragments/footer.html :: footer"></header>
 </div>
 </body>
 </html>

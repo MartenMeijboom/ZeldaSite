@@ -2,10 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
     <title>Error - ZeldaSite</title>
 </head>
+
 <body>
-<p th:text="${error}"></p>
+<div class="bgError">
+    <header th:insert="../fragments/menubar.html :: menu"></header>
+    <div id="centered" class="whiteT">
+        <p th:text="${error}"></p>
+    </div>
+</div>
 <header th:insert="../fragments/footer.html :: footer"></header>
 
 </body>

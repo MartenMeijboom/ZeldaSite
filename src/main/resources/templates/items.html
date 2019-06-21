@@ -9,9 +9,28 @@
 <div class="bgItems">
     <header th:insert="../fragments/menubar.html :: menu_items"></header>
     <img>
-    <div id="OverView">
-        <h2 class="whiteT" id="6%left">Items</h2>
 
+    <div id="OverView">
+        <div class="whiteT">
+            <h2>Add new item:</h2>
+            <form id="itemform" action="/items" method="post">
+                Name:<br>
+                <input type="text" name="name"><br>
+
+                Description:<br>
+                <input type="text" name="description"><br>
+
+                Type:<br>
+                <select name="type" form="itemform">
+                    <option th:each="type:${types}" th:value="${type}" th:text="${type}"></option>
+                </select>
+
+                <input type="submit" value="Add">
+            </form>
+        </div>
+
+
+        <h2 class="whiteT" id="6%left">Items</h2>
         <table>
             <tr>
                 <th><b>Name</b></th>
@@ -26,24 +45,7 @@
         </table>
     </div>
 
-    <div class="whiteT" id="AddOverView">
-        <h2>Add new item:</h2>
 
-        <form id="itemform" action="/items" method="post">
-            Name:<br>
-            <input type="text" name="name"><br>
-
-            Description:<br>
-            <input type="text" name="description"><br>
-
-            Type:<br>
-            <select name="type" form="itemform">
-                <option th:each="type:${types}" th:value="${type}" th:text="${type}"></option>
-            </select>
-
-            <input type="submit" value="Add">
-        </form>
-    </div>
     <header th:insert="../fragments/footer.html :: footer"></header>
 </div>
 </body>

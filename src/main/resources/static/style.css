@@ -68,9 +68,32 @@ body {
     background-size: cover;
 }
 
-#itemsbody
-{
+#itemsbody {
     background-color: #483D8E;
+}
+
+#charbody {
+    background-color: #62A238;
+}
+
+#bossesbody {
+    background-color: #451A10;
+}
+
+#bosbody {
+    background-color: #723594;
+}
+
+#itembody {
+    background-color: #986745;
+}
+
+#bossform {
+    margin-left: 12.5%;
+}
+
+#itemform {
+    margin-left: 12.5%;
 }
 
 [tabindex="-1"]:focus {
@@ -89,45 +112,56 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 0.5rem;
 }
-.addButton{
-    margin-left:14%;
+
+.addButton {
+    margin-left: 14%;
 }
 
-.userInfo{
-    margin-left: 4%;
+.personal {
+    margin-left: 12.5%;
+}
+
+.userInfo {
     width: 20%;
     float: left;
 }
 
-.addColectedItem{
+.addColectedItem {
     width: 30%;
     float: left;
+    margin-bottom: 75px;
 }
 
-#objectimg{
-    max-height: 40%;
-    max-width: 40%;
+#objectimg {
+    max-height: 20%;
+    max-width: 20%;
     margin-left: 4%;
 }
 
-#BossText{
+#BossText {
     max-width: 60%;
     margin-left: 2%;
 }
 
-#objectView{
+#objectView {
     margin-left: 2%;
     width: 45%;
+    margin-bottom: 75px;
     float: left;
 }
 
-#OverView{
+.addplace {
+    margin-left: 40px;
+}
+
+#OverView {
     width: 60%;
     float: left;
+    margin-bottom: 75px;
 }
 
-#AddOverView{
-    width: 40%;
+#AddOverView {
+    width: 50%;
     float: left;
 }
 
@@ -419,6 +453,15 @@ template {
     display: none;
 }
 
+.bgError {
+    background-image: url("bgeror.jpg");
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .bgHome {
     background-image: url("zeldabackground.jpg");
     width: 100%;
@@ -428,7 +471,7 @@ template {
     background-size: cover;
 }
 
-.bgLogin{
+.bgLogin {
     background-image: url("backgroundlogin.png");
     width: 100%;
     height: 100%;
@@ -437,7 +480,7 @@ template {
     background-size: cover;
 }
 
-.bgSettings{
+.bgSettings {
     background-image: url("backgroundsettings.png");
     width: 100%;
     height: 100%;
@@ -446,7 +489,7 @@ template {
     background-size: cover;
 }
 
-.bgBosses{
+.bgBosses {
     background-image: url("backgroundbosses.png");
     width: 100%;
     height: 100%;
@@ -455,7 +498,7 @@ template {
     background-size: cover;
 }
 
-.bgItems{
+.bgItems {
     background-image: url("backgrounditems.png");
     width: 100%;
     height: 100%;
@@ -464,7 +507,7 @@ template {
     background-size: cover;
 }
 
-.bgItem{
+.bgItem {
     background-image: url("backgrounditem.png");
     width: 100%;
     height: 100%;
@@ -473,7 +516,7 @@ template {
     background-size: cover;
 }
 
-.bgRegister{
+.bgRegister {
     background-image: url("backgroundRegister.jpg");
     width: 100%;
     height: 100%;
@@ -482,7 +525,7 @@ template {
     background-size: cover;
 }
 
-.bgBoss{
+.bgBoss {
     background-image: url("backgroundBoss.png");
     width: 100%;
     height: 100%;
@@ -492,7 +535,7 @@ template {
 }
 
 
-.bgCharacter{
+.bgCharacter {
     background-image: url("backgroundchar.png");
     width: 100%;
     height: 100%;
@@ -507,18 +550,18 @@ template {
     position: fixed;
     z-index: 1;
     top: 50px;
-    right:40px;
+    right: 40px;
 
 
     overflow-x: hidden;
     padding: 8px 0;
 }
 
-.whiteT{
+.whiteT {
     color: white;
 }
 
-.blackT{
+.blackT {
     color: black;
 }
 
@@ -545,8 +588,13 @@ template {
 }
 
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 }
 
 
@@ -554,7 +602,6 @@ template {
     display: none !important;
 }
 
-table tr th
-{
+table tr th {
     padding: 3px;
 }
