@@ -30,9 +30,9 @@ public class ApplicationManager {
     }
 
     private void generateTestData() {
-        User user = new User("test", "Pieter Post", "sdfijbsadfjasijfbasi.com", "123");
+        User user = new User("Joris", "Jorig Immink", "jimmink@mail.com", "123");
         adduser(user);
-        user = new User("marten", "Marten Meijboom", "test@testmail.com", "123");
+        user = new User("Marten", "Marten Meijboom", "mmeijboom@mail.com", "1234");
         adduser(user);
 
         Item item = new Item("Item1", "testType", "");
