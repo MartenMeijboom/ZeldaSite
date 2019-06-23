@@ -90,10 +90,17 @@ body {
 
 #bossform {
     margin-left: 12.5%;
+    width: 30%;
 }
 
 #itemform {
     margin-left: 12.5%;
+    width: 30%;
+}
+
+#loginform {
+    margin: auto;
+    width: 80%;
 }
 
 [tabindex="-1"]:focus {
@@ -592,9 +599,15 @@ template {
         padding-top: 15px;
     }
 
+
     .sidenav a {
         font-size: 18px;
     }
+}
+
+input
+{
+    width: 100%;
 }
 
 
@@ -605,3 +618,146 @@ template {
 table tr th {
     padding: 3px;
 }
+
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (max-width: 550px) {
+    body {
+        font-size: xx-large;
+    }
+
+    #OverView {
+        width: 100%;
+        float: left;
+        margin-bottom: 75px;
+    }
+
+    #AddOverView {
+        width: 100%;
+        float: left;
+    }
+    #objectimg {
+        max-height: 60%;
+        max-width: 100%;
+        margin-left: 4%;
+    }
+    #objectView {
+        margin-left: 2%;
+        width: 100%;
+        margin-bottom: 75px;
+        float: left;
+    }
+    table {
+        margin-left: 5%;
+        border-collapse: collapse;
+        width: 95%;
+    }
+    #bossform {
+        margin-left: 5%;
+        width: 90%;
+    }
+    #itemform
+    {
+        margin-left: 5%;
+        width: 90%;
+    }
+    .userInfo
+    {
+        width: 90%;
+        margin: auto;
+    }
+    .addColectedItem
+    {
+        width: 90%;
+        margin: auto;
+    }
+    #centered {
+        width: 90%;
+        margin: auto;
+    }
+    #topnav
+    {
+        font-size: x-large;
+    }
+    .topnav a
+    {
+        width: 90%;
+    }
+    .sidenav
+    {
+        width: 0px;
+    }
+}
+
+@media only screen and (min-width: 550px) and (max-width: 1000px) {
+    body {
+        font-size: x-large;
+    }
+
+    #OverView {
+        width: 100%;
+        float: left;
+        margin-bottom: 75px;
+    }
+
+    #AddOverView {
+        width: 100%;
+        float: left;
+    }
+    #objectimg {
+        max-height: 50%;
+        max-width: 50%;
+        margin-left: 4%;
+    }
+    #objectView {
+        margin-left: 2%;
+        width: 100%;
+        margin-bottom: 75px;
+        float: left;
+    }
+    table {
+        margin-left: 5%;
+        border-collapse: collapse;
+        width: 95%;
+    }
+    #bossform {
+        margin-left: 5%;
+        width: 50%;
+    }
+    #itemform
+    {
+        margin-left: 5%;
+        width: 50%;
+    }
+    .userInfo
+    {
+        width: 60%;
+        margin: auto;
+    }
+    .addColectedItem
+    {
+        width: 60%;
+        margin: auto;
+    }
+    #centered {
+        width: 90%;
+        margin: auto;
+    }
+    #topnav
+    {
+        font-size: x-large;
+    }
+    .topnav a
+    {
+        width: 45%;
+    }
+    .sidenav
+    {
+        width: 0px;
+    }
+}
+
+
+
